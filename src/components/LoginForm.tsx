@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { useInputField } from "../hooks";
 
-import { performLogin } from "../actions/auth";
+import { startLogin } from "../actions/auth";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const LoginForm = () => {
       alert("Input fields must not be empty");
       return;
     }
-    dispatch(performLogin(username.value, password.value));
+    dispatch(startLogin(username.value, password.value));
   }
 
   return (
