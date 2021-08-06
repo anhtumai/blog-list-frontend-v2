@@ -1,8 +1,11 @@
 import storageUtils from "../utils/localStorage";
 
-const initialState = null;
+const initialState = storageUtils.loadUser();
 
-function authReducer(state = initialState, action: Action) {
+function authReducer(
+  state: IUserWithToken | null = initialState,
+  action: Action,
+) {
   switch (action.type) {
     case "LOGIN": {
       return action.data;
