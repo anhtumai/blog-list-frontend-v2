@@ -7,7 +7,17 @@ const Notification = () => {
 
   if (message === "") return null;
 
-  return <div className={notiType}>{message}</div>;
+  const style = {
+    color: notiType === "error" ? "red" : "green",
+    background: "lightgrey",
+    fontSize: "12px",
+    borderStyle: "solid",
+    borderRadius: "5px",
+    padding: "5px",
+    marginBottom: "5px",
+  };
+
+  return <div style={style}>{message}</div>;
 };
 
 export default Notification;
