@@ -1,5 +1,6 @@
 import { Dispatch } from "react-dom/node_modules/@types/react";
 import authService from "../services/auth";
+import { startSetNotification } from "./notification";
 
 export const doLogin = (user: IUserWithToken) => ({
   type: "LOGIN",
@@ -12,7 +13,9 @@ export const startLogin =
       const loggedUser = await authService.login({ username, password });
       console.log(loggedUser);
       dispatch(doLogin(loggedUser));
+      dispatch(startSetNotification("success", "Login successfully"));
     } catch (err) {
       console.log(err);
+      dispatch(startSetNotification("error", "Fail to login"));
     }
   };
