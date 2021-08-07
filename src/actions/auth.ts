@@ -7,11 +7,14 @@ export const doLogin = (user: IUserWithToken) => ({
   data: user,
 });
 
+export const doLogout = () => ({
+  type: "LOGOUT",
+});
+
 export const startLogin =
   (username: string, password: string) => async (dispatch: Dispatch<any>) => {
     try {
       const loggedUser = await authService.login({ username, password });
-      console.log(loggedUser);
       dispatch(doLogin(loggedUser));
       dispatch(startSetNotification("success", "Login successfully"));
     } catch (err) {

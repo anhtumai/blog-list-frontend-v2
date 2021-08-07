@@ -4,7 +4,7 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://blog-list-backend-l3isj.ondigitalocean.app/",
+			target: "http://localhost:3003",
       changeOrigin: true,
     })
   );

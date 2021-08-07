@@ -7,9 +7,8 @@ function authReducer(
   action: Action,
 ) {
   switch (action.type) {
-    case "LOGIN": {
+    case "LOGIN":
       return action.data;
-    }
     case "LOGOUT":
       return null;
     default:

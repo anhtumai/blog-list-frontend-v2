@@ -16,7 +16,12 @@ function configureStore() {
   const store = createStore(reducer, applyMiddleware(thunk));
 
   store.subscribe(() => {
-    storageUtils.saveUser(store.getState().user);
+    const user = store.getState().user;
+    if (user === null) {
+      storageUtils.removeUser();
+    } else {
+      storageUtils.saveUser(store.getState().user);
+    }
   });
 
   return store;
