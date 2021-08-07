@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import authReducer from "./reducers/auth";
 import notificationReducer from "./reducers/notification";
 import storageUtils from "./utils/localStorage";
+import blogReducer from "./reducers/blog";
 
 function configureStore() {
   const reducer = combineReducers({
     user: authReducer,
     notification: notificationReducer,
+    blogs: blogReducer,
   });
 
   const store = createStore(reducer, applyMiddleware(thunk));
