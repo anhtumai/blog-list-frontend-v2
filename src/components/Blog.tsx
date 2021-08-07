@@ -1,16 +1,20 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 interface IBlogProps {
   blog: IBlog;
 }
 
 const Blog = ({ blog }: IBlogProps) => {
+  const currentUser = useSelector((state) => (state as any).user);
+  const owned = currentUser.username === blog.user.username ? true : false;
+
   const [expand, setExpand] = useState(false);
 
   const showWhenVisible = { display: expand ? "" : "none" };
 
   const removeButtonStyle = {
-    display: "none",
+    display: owned ? "" : "none",
     backgroundColor: "#008CBA",
   };
 
