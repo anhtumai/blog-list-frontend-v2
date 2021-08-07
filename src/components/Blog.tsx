@@ -1,11 +1,20 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { Dispatch, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { startSetNotification } from "../actions/notification";
+import { startDeleteBlog } from "../actions/blog";
 
 interface IBlogProps {
   blog: IBlog;
 }
 
+function handleDelete(dispatch: Dispatch<any>, blog: IBlog) {
+  if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
+
+  dispatch(startDeleteBlog(blog));
+}
+
 const Blog = ({ blog }: IBlogProps) => {
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => (state as any).user);
   const owned = currentUser.username === blog.user.username ? true : false;
 
@@ -55,6 +64,7 @@ const Blog = ({ blog }: IBlogProps) => {
           data-testid="remove-btn"
           type="button"
           style={removeButtonStyle}
+          onClick={() => handleDelete(dispatch, blog)}
         >
           <small>remove</small>
         </button>
