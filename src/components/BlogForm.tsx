@@ -9,7 +9,7 @@ import InputWithLabel from "./InputWithLabel";
 const BlogForm = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => (state as any).user);
+  const user = useSelector((state: RootState) => state.user);
 
   const title = useInputField();
   const author = useInputField();

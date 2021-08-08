@@ -1,4 +1,15 @@
+import { DefaultRootState } from "react-redux";
+
 declare global {
+  interface NotificationState {
+    message: string;
+    notiType: "error" | "success";
+  }
+  interface RootState extends DefaultRootState {
+    user: IUserWithToken;
+    notification: NotificationState;
+    blogs: IBlog[];
+  }
   interface IBlog {
     likes: number;
     title: string;

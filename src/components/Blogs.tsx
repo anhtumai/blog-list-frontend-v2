@@ -1,9 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Blog from "./Blog";
 
 const Blogs = () => {
-  const dispatch = useDispatch();
-  const blogs: IBlog[] = useSelector((state) => (state as any).blogs);
+  const blogs: IBlog[] = useSelector((state: RootState) => state.blogs);
 
   return (
     <div>

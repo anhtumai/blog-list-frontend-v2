@@ -55,4 +55,6 @@ async function remove(id: string) {
   return response.data;
 }
 
-export default { getAll, create, update, updateLikes, remove, setToken };
+const blogService = { getAll, create, update, updateLikes, remove, setToken };
+
+export default blogService;
