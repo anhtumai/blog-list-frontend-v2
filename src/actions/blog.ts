@@ -34,3 +34,30 @@ export const startDeleteBlog = (blog: IBlog) => {
     }
   };
 };
+
+const doCreateBlog = (blog: ICreateBlog) => ({
+  type: "CREATE_BLOG",
+  data: blog,
+});
+
+export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      const newBlog = await blogService.create(blog);
+      const updatedBlog = {
+        ...newBlog,
+        user: { name: user.name, username: user.username, id: newBlog.user },
+      };
+      dispatch(doCreateBlog(updatedBlog));
+      dispatch(
+        startSetNotification(
+          "success",
+          `Create ${blog.title} by ${blog.author}`,
+        ),
+      );
+    } catch (err) {
+      console.log(err);
+      dispatch(startSetNotification("error", `Fail to create ${blog.title}`));
+    }
+  };
+};

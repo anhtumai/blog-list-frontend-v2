@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React from "react";
 
 export const useInputField = () => {
@@ -8,8 +8,13 @@ export const useInputField = () => {
     setValue((event.target as HTMLInputElement).value);
   };
 
+  const reset = () => {
+    setValue("");
+  };
+
   return {
     value,
     onChange,
+    reset,
   };
 };

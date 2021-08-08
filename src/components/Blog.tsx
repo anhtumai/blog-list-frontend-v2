@@ -1,6 +1,5 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startSetNotification } from "../actions/notification";
 import { startDeleteBlog } from "../actions/blog";
 
 interface IBlogProps {
