@@ -1,6 +1,6 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startDeleteBlog } from "../actions/blog";
+import { startDeleteBlog, startLikeBlog } from "../actions/blog";
 
 interface IBlogProps {
   blog: IBlog;
@@ -10,6 +10,17 @@ function handleDelete(dispatch: Dispatch<any>, blog: IBlog) {
   if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
 
   dispatch(startDeleteBlog(blog));
+}
+
+function handleLike(dispatch: Dispatch<any>, blog: IBlog) {
+  const updatedBlog: IUpdateBlog = {
+    id: blog.id,
+    url: blog.url,
+    title: blog.title,
+    author: blog.author,
+    likes: blog.likes,
+  };
+  dispatch(startLikeBlog(updatedBlog));
 }
 
 const Blog = ({ blog }: IBlogProps) => {
@@ -54,7 +65,11 @@ const Blog = ({ blog }: IBlogProps) => {
         </p>
         <p>
           <span data-testid="like">likes {blog.likes}</span>
-          <button data-testid="like-btn" type="button">
+          <button
+            data-testid="like-btn"
+            type="button"
+            onClick={() => handleLike(dispatch, blog)}
+          >
             <small>like</small>
           </button>
         </p>

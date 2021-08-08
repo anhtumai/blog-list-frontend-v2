@@ -1,8 +1,3 @@
-interface NotificationState {
-  message: string;
-  notiType: "error" | "success";
-}
-
 const initialNotification: NotificationState = {
   message: "",
   notiType: "error",

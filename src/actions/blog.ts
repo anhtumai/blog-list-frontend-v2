@@ -61,3 +61,19 @@ export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
     }
   };
 };
+
+const doLikeBlog = (id: string) => ({
+  type: "LIKE_BLOG",
+  data: { id },
+});
+
+export const startLikeBlog = (blog: IUpdateBlog) => {
+  return async (dispatch: Dispatch<any>) => {
+    try {
+      await blogService.updateLikes(blog);
+      dispatch(doLikeBlog(blog.id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
