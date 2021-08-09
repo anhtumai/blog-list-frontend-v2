@@ -22,6 +22,10 @@ declare global {
       name: string;
       id: string;
     };
+    comments: {
+      content: string;
+      id: string;
+    }[];
   }
   interface ICreateBlog {
     title: string;
