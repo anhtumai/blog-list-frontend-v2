@@ -1,9 +1,10 @@
 import Notification from "./components/Notification";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { startInitBlogs } from "./actions/blog";
 import MainPage from "./components/MainPage";
+import UsersPage from "./components/UsersPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ function App() {
       <h1>Blog List Application</h1>
       <Notification />
       <Switch>
+        <Route path="/users">
+          <UsersPage />
+        </Route>
         <Route path="/">
           <MainPage />
         </Route>

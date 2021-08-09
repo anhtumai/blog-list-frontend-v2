@@ -6,12 +6,14 @@ import notificationReducer from "./reducers/notification";
 import storageUtils from "./utils/localStorage";
 import blogReducer from "./reducers/blog";
 import blogService from "./services/blog";
+import userReducer from "./reducers/user";
 
 function configureStore() {
   const reducer = combineReducers({
     user: authReducer,
     notification: notificationReducer,
     blogs: blogReducer,
+    users: userReducer,
   });
 
   const store = createStore(reducer, applyMiddleware(thunk));

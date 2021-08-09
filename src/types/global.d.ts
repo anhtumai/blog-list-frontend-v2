@@ -9,6 +9,7 @@ declare global {
     user: IUserWithToken;
     notification: NotificationState;
     blogs: IBlog[];
+    users: IUser[];
   }
   interface IBlog {
     likes: number;
@@ -39,7 +40,7 @@ declare global {
     username: string;
     name: string;
     id: string;
-    blogs: IBlog[];
+    blogs: IUpdateBlog[];
   }
   interface IUserWithToken {
     token: string;
