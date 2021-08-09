@@ -1,6 +1,8 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { startDeleteBlog, startLikeBlog } from "../actions/blog";
+import { startDeleteBlog } from "../actions/blog";
+
+import LikeSection from "./LikeSection";
 
 interface IBlogProps {
   blog: IBlog;
@@ -10,17 +12,6 @@ function handleDelete(dispatch: Dispatch<any>, blog: IBlog) {
   if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
 
   dispatch(startDeleteBlog(blog));
-}
-
-function handleLike(dispatch: Dispatch<any>, blog: IBlog) {
-  const updatedBlog: IUpdateBlog = {
-    id: blog.id,
-    url: blog.url,
-    title: blog.title,
-    author: blog.author,
-    likes: blog.likes,
-  };
-  dispatch(startLikeBlog(updatedBlog));
 }
 
 const Blog = ({ blog }: IBlogProps) => {
@@ -49,7 +40,9 @@ const Blog = ({ blog }: IBlogProps) => {
   return (
     <div data-testid="blog" style={blogStyle}>
       <div>
-        {blog.title} {blog.author}{" "}
+        <a href={`/blogs/${blog.id}`}>
+          {blog.title} {blog.author}{" "}
+        </a>
         <button
           data-testid="blog-toggle-btn"
           id="toggleButton"
@@ -63,16 +56,7 @@ const Blog = ({ blog }: IBlogProps) => {
         <p>
           <a href={blog.url}>{blog.url}</a>
         </p>
-        <p>
-          <span data-testid="like">likes {blog.likes}</span>
-          <button
-            data-testid="like-btn"
-            type="button"
-            onClick={() => handleLike(dispatch, blog)}
-          >
-            <small>like</small>
-          </button>
-        </p>
+        <LikeSection blog={blog} />
         <p>{blog.user.name}</p>
         <button
           data-testid="remove-btn"

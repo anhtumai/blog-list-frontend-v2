@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 
+import LikeSection from "./LikeSection";
+
 const BlogView = ({ id }: { id: string }) => {
   const blogs = useSelector((state: RootState) => state.blogs);
 
@@ -18,7 +20,7 @@ const BlogView = ({ id }: { id: string }) => {
       </h2>
       <div style={divStyle}>
         <a href={viewedBlog.url}>{viewedBlog.url}</a>
-        <p>{viewedBlog.likes} likes</p>
+        <LikeSection blog={viewedBlog} />
         <p>added by {viewedBlog.user.name}</p>
       </div>
     </div>
