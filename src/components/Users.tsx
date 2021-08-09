@@ -10,7 +10,6 @@ const Users = () => {
   }, [dispatch]);
 
   const users = useSelector((state: RootState) => state.users);
-  console.log(users);
   return (
     <table>
       <tbody>

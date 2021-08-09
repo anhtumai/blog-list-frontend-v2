@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { startInitBlogs } from "./actions/blog";
 import MainPage from "./components/MainPage";
 import UsersPage from "./components/UsersPage";
+import SingleUserPage from "./components/SingleUserPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ function App() {
       <h1>Blog List Application</h1>
       <Notification />
       <Switch>
+        <Route path="/users/:id">
+          <SingleUserPage />
+        </Route>
         <Route path="/users">
           <UsersPage />
         </Route>
