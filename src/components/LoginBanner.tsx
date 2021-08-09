@@ -16,7 +16,8 @@ const LoginBanner = () => {
 
   return (
     <p>
-      {user.name} logged in &nbsp;
+      <a href="/">blogs</a> <a href="/users">users</a> {user.name} logged in
+      &nbsp;
       <button type="button" onClick={handleLogout}>
         <small>logout</small>
       </button>
