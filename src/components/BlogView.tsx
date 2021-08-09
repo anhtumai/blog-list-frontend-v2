@@ -7,12 +7,16 @@ const BlogView = ({ id }: { id: string }) => {
 
   if (viewedBlog === undefined) return <div>Blog not found</div>;
 
+  const divStyle = {
+    lineHeight: 0.4,
+  };
+
   return (
     <div>
       <h2>
         {viewedBlog.title} {viewedBlog.author}
       </h2>
-      <div>
+      <div style={divStyle}>
         <a href={viewedBlog.url}>{viewedBlog.url}</a>
         <p>{viewedBlog.likes} likes</p>
         <p>added by {viewedBlog.user.name}</p>
