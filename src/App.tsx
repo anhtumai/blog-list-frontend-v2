@@ -6,6 +6,7 @@ import { startInitBlogs } from "./actions/blog";
 import MainPage from "./components/MainPage";
 import UsersPage from "./components/UsersPage";
 import SingleUserPage from "./components/SingleUserPage";
+import SingleBlogPage from "./components/SingleBlogPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function App() {
       <Switch>
         <Route path="/users/:id">
           <SingleUserPage />
+        </Route>
+        <Route path="/blogs/:id">
+          <SingleBlogPage />
         </Route>
         <Route path="/users">
           <UsersPage />
