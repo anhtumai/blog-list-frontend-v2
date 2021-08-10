@@ -1,6 +1,8 @@
 import { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { startLikeBlog } from "../actions/blog";
+import { userSelector } from "../selectors";
 
 function handleLike(dispatch: Dispatch<any>, blog: IBlog, token: string) {
   const updatedBlog: IUpdateBlog = {
@@ -15,7 +17,7 @@ function handleLike(dispatch: Dispatch<any>, blog: IBlog, token: string) {
 
 const LikeSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
   return (
     <p>
       <span data-testid="like">likes {blog.likes}</span>

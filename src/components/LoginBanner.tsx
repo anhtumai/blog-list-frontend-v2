@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
+
+import { userSelector } from "../selectors";
 import { useHistory } from "react-router";
 import { doLogout } from "../actions/auth";
 import { startSetNotification } from "../actions/notification";
@@ -6,7 +8,7 @@ import { startSetNotification } from "../actions/notification";
 const LoginBanner = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
 
   function handleLogout() {
     dispatch(doLogout());

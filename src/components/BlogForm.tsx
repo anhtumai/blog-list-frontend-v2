@@ -1,15 +1,16 @@
 import React from "react";
-import { useInputField } from "../hooks";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { startCreateBlog } from "../actions/blog";
-import { useSelector } from "react-redux";
+import { userSelector } from "../selectors";
+import { useInputField } from "../hooks";
+
 import InputWithLabel from "./InputWithLabel";
 
 const BlogForm = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
 
   const title = useInputField();
   const author = useInputField();

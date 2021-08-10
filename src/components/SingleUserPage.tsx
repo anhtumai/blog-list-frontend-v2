@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 
 import LoginBanner from "./LoginBanner";
 import UserView from "./UserView";
+import { userSelector } from "../selectors";
 
 const SingleUserPage = () => {
   const userId = (useParams() as any).id;
@@ -13,7 +14,7 @@ const SingleUserPage = () => {
   useEffect(() => {
     dispatch(startInitUsers());
   }, [dispatch]);
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
 
   if (user === null) return <div>You must log in first to view this page</div>;
 

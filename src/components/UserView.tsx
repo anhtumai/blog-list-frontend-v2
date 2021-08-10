@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 
+import { usersSelector } from "../selectors";
+
 const UserView = ({ id }: { id: string }) => {
-  const users = useSelector((state: RootState) => state.users);
+  const users = useSelector(usersSelector);
 
   const viewedUser = users.find((user) => user.id === id);
 

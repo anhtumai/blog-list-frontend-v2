@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 
+import { userSelector } from "../selectors";
+
 import LoginBanner from "./LoginBanner";
 import Users from "./Users";
 
 const UsersPage = () => {
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
 
   if (user === null) return <div>You must log in first to view this page</div>;
 

@@ -1,5 +1,7 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { userSelector } from "../selectors";
 import { startDeleteBlog } from "../actions/blog";
 
 import LikeSection from "./LikeSection";
@@ -17,7 +19,7 @@ function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
 const Blog = ({ blog }: IBlogProps) => {
   const dispatch = useDispatch();
 
-  const currentUser = useSelector((state: RootState) => state.user);
+  const currentUser = useSelector(userSelector);
   const owned = currentUser.username === blog.user.username ? true : false;
 
   const [expand, setExpand] = useState(false);

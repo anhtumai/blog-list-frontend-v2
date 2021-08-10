@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
+
+import { blogsSelector } from "../selectors";
 import CommentsSection from "./CommentsSection";
 
 import LikeSection from "./LikeSection";
 
 const BlogView = ({ id }: { id: string }) => {
-  const blogs = useSelector((state: RootState) => state.blogs);
+  const blogs = useSelector(blogsSelector);
 
   const viewedBlog = blogs.find((blog) => blog.id === id);
 

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { usersSelector } from "../selectors";
 import { startInitUsers } from "../actions/user";
 
 const Users = () => {
@@ -9,7 +11,7 @@ const Users = () => {
     dispatch(startInitUsers());
   }, [dispatch]);
 
-  const users = useSelector((state: RootState) => state.users);
+  const users = useSelector(usersSelector);
   return (
     <table>
       <tbody>

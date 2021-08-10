@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInputField } from "../hooks";
 
 import { startCreateComment } from "../actions/comment";
+import { userSelector } from "../selectors";
 
 const CommentsSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
 
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector(userSelector);
 
   const content = useInputField();
 

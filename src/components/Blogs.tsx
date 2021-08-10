@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
+import { blogsSelector } from "../selectors";
 import Blog from "./Blog";
 
 const Blogs = () => {
-  const blogs: IBlog[] = useSelector((state: RootState) => state.blogs);
+  const blogs: IBlog[] = useSelector(blogsSelector);
 
   return (
     <div>

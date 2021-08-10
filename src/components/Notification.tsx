@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
+import { notificationSelector } from "../selectors/index";
 
 const Notification = () => {
-  const { message, notiType } = useSelector(
-    (state: RootState) => state.notification,
-  );
+  const { message, notiType } = useSelector(notificationSelector);
 
   if (message === "") return null;
 
