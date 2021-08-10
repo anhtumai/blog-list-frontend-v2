@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { blogsSelector } from "../selectors";
 import CommentsSection from "./CommentsSection";
@@ -22,7 +23,7 @@ const BlogView = ({ id }: { id: string }) => {
         {viewedBlog.title} {viewedBlog.author}
       </h2>
       <div style={divStyle}>
-        <a href={viewedBlog.url}>{viewedBlog.url}</a>
+        <Link to={viewedBlog.url}>{viewedBlog.url}</Link>
         <LikeSection blog={viewedBlog} />
         <p>added by {viewedBlog.user.name}</p>
         <CommentsSection blog={viewedBlog} />

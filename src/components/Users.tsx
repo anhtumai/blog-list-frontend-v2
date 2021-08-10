@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { usersSelector } from "../selectors";
 import { startInitUsers } from "../actions/user";
@@ -22,7 +23,7 @@ const Users = () => {
         {users.map((user) => (
           <tr key={user.id}>
             <td>
-              <a href={`/users/${user.id}`}>{user.name}</a>
+              <Link to={`/users/${user.id}`}>{user.name}</Link>
             </td>
             <td>{user.blogs.length}</td>
           </tr>

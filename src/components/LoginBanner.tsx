@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { userSelector } from "../selectors";
 import { useHistory } from "react-router";
@@ -18,8 +19,8 @@ const LoginBanner = () => {
 
   return (
     <p>
-      <a href="/">blogs</a> <a href="/users">users</a> {user.name} logged in
-      &nbsp;
+      <Link to="/">blogs</Link> <Link to="/users">users</Link> {user.name}{" "}
+      logged in &nbsp;
       <button type="button" onClick={handleLogout}>
         <small>logout</small>
       </button>

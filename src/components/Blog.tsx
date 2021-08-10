@@ -1,5 +1,6 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { userSelector } from "../selectors";
 import { startDeleteBlog } from "../actions/blog";
@@ -40,12 +41,14 @@ const Blog = ({ blog }: IBlogProps) => {
     lineHeight: "2px",
   };
 
+  console.log(blog.url);
+
   return (
     <div data-testid="blog" style={blogStyle}>
       <div>
-        <a href={`/blogs/${blog.id}`}>
+        <Link to={`/blogs/${blog.id}`}>
           {blog.title} {blog.author}{" "}
-        </a>
+        </Link>
         <button
           data-testid="blog-toggle-btn"
           id="toggleButton"
@@ -57,7 +60,9 @@ const Blog = ({ blog }: IBlogProps) => {
       </div>
       <div style={showWhenVisible}>
         <p>
-          <a href={blog.url}>{blog.url}</a>
+          <a href={blog.url} target="_blank" rel="noreferrer">
+            {blog.url}
+          </a>
         </p>
         <LikeSection blog={blog} />
         <p>{blog.user.name}</p>
