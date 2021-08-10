@@ -15,11 +15,12 @@ const blogReducer = (state: IBlog[] = [], action: Action) => {
     case "INIT_BLOGS":
       return action.data;
     case "ADD_COMMENT":
-      const { blogId, comment } = action.data;
+      const { blogId, comment }: { blogId: string; comment: IComment } =
+        action.data;
       return state.map((blog) =>
         blog.id !== blogId
           ? blog
-          : Object.assign(blog, { comments: blog.comments.concat(comment) }),
+          : { ...blog, comments: blog.comments.concat(comment) },
       );
     default:
       return state;
