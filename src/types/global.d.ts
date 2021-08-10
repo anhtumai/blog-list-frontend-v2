@@ -51,6 +51,13 @@ declare global {
     username: string;
     name: string;
   }
+  interface IComment {
+    content: string;
+    id: string;
+  }
+  interface ICreateComment {
+    content: string;
+  }
   interface NotificationAction {
     type: "SHOW" | "CLEAR";
     data?: {

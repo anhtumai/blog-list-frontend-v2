@@ -1,12 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "/api/blogs";
+import { constructConfig } from "./utils";
 
-function constructConfig(token: string) {
-  return {
-    headers: { Authorization: `bearer ${token}` },
-  };
-}
+const baseUrl = "/api/blogs";
 
 async function getAll(): Promise<IBlog[]> {
   const response = await axios.get(baseUrl);

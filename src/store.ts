@@ -5,7 +5,6 @@ import authReducer from "./reducers/auth";
 import notificationReducer from "./reducers/notification";
 import storageUtils from "./utils/localStorage";
 import blogReducer from "./reducers/blog";
-import blogService from "./services/blog";
 import userReducer from "./reducers/user";
 
 function configureStore() {
@@ -21,10 +20,8 @@ function configureStore() {
   store.subscribe(() => {
     const user = store.getState().user;
     if (user === null) {
-      blogService.setToken(null);
       storageUtils.removeUser();
     } else {
-      blogService.setToken(user.token);
       storageUtils.saveUser(store.getState().user);
     }
   });
