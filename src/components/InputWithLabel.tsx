@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 interface IInputWithLabelProps {
   htmlFor: string;
   value: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onInputChange(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 

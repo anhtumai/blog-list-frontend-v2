@@ -8,15 +8,16 @@ interface IBlogProps {
   blog: IBlog;
 }
 
-function handleDelete(dispatch: Dispatch<any>, blog: IBlog) {
+function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
   if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
 
-  dispatch(startDeleteBlog(blog));
+  dispatch(startDeleteBlog(blog, token));
 }
 
 const Blog = ({ blog }: IBlogProps) => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => (state as any).user);
+
+  const currentUser = useSelector((state: RootState) => state.user);
   const owned = currentUser.username === blog.user.username ? true : false;
 
   const [expand, setExpand] = useState(false);
@@ -62,7 +63,7 @@ const Blog = ({ blog }: IBlogProps) => {
           data-testid="remove-btn"
           type="button"
           style={removeButtonStyle}
-          onClick={() => handleDelete(dispatch, blog)}
+          onClick={() => handleDelete(dispatch, blog, currentUser.token)}
         >
           <small>remove</small>
         </button>

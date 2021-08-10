@@ -2,10 +2,10 @@ import axios from "axios";
 
 const baseUrl = "/api/blogs";
 
-function constructConfig(token: string) {
-  return {
-    headers: { Authorization: `bearer ${token}` },
-  };
+let token: string | null = null;
+
+function setToken(newToken: string | null) {
+  token = newToken !== null ? `bearer ${newToken}` : null;
 }
 
 async function getAll(): Promise<IBlog[]> {
@@ -13,16 +13,19 @@ async function getAll(): Promise<IBlog[]> {
   return response.data;
 }
 
-async function create(newBlog: ICreateBlog, token: string) {
-  const config = constructConfig(token);
+async function create(newBlog: ICreateBlog) {
+  const config = {
+    headers: { Authorization: token },
+  };
 
-  console.log(token, typeof token);
   const response = await axios.post(baseUrl, newBlog, config);
   return response.data;
 }
 
-async function updateLikes(blog: IUpdateBlog, token: string) {
-  const config = constructConfig(token);
+async function updateLikes(blog: IUpdateBlog) {
+  const config = {
+    headers: { Authorization: token },
+  };
 
   const response = await axios.put(
     `${baseUrl}/${blog.id}`,
@@ -33,21 +36,25 @@ async function updateLikes(blog: IUpdateBlog, token: string) {
   return response.data;
 }
 
-async function update(newBlog: IUpdateBlog, token: string) {
-  const config = constructConfig(token);
+async function update(newBlog: IUpdateBlog) {
+  const config = {
+    headers: { Authorization: token },
+  };
 
   const response = await axios.put(`${baseUrl}/${newBlog.id}`, newBlog, config);
 
   return response.data;
 }
 
-async function remove(id: string, token: string) {
-  const config = constructConfig(token);
+async function remove(id: string) {
+  const config = {
+    headers: { Authorization: token },
+  };
 
   const response = await axios.delete(`${baseUrl}/${id}`, config);
   return response.data;
 }
 
-const blogService = { getAll, create, update, updateLikes, remove };
+const blogService = { getAll, create, update, updateLikes, remove, setToken };
 
 export default blogService;

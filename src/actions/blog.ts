@@ -17,10 +17,10 @@ const doDeleteBlog = (id: string) => ({
   data: { id },
 });
 
-export const startDeleteBlog = (blog: IBlog) => {
+export const startDeleteBlog = (blog: IBlog, token: string) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      await blogService.remove(blog.id);
+      await blogService.remove(blog.id, token);
       dispatch(doDeleteBlog(blog.id));
       dispatch(
         startSetNotification(
@@ -43,7 +43,7 @@ const doCreateBlog = (blog: ICreateBlog) => ({
 export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      const newBlog = await blogService.create(blog);
+      const newBlog = await blogService.create(blog, user.token);
       const updatedBlog = {
         ...newBlog,
         user: { name: user.name, username: user.username, id: newBlog.user },
@@ -67,10 +67,10 @@ const doLikeBlog = (id: string) => ({
   data: { id },
 });
 
-export const startLikeBlog = (blog: IUpdateBlog) => {
+export const startLikeBlog = (blog: IUpdateBlog, token: string) => {
   return async (dispatch: Dispatch<any>) => {
     try {
-      await blogService.updateLikes(blog);
+      await blogService.updateLikes(blog, token);
       dispatch(doLikeBlog(blog.id));
     } catch (err) {
       console.log(err);

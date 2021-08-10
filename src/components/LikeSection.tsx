@@ -1,8 +1,8 @@
 import { Dispatch } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startLikeBlog } from "../actions/blog";
 
-function handleLike(dispatch: Dispatch<any>, blog: IBlog) {
+function handleLike(dispatch: Dispatch<any>, blog: IBlog, token: string) {
   const updatedBlog: IUpdateBlog = {
     id: blog.id,
     url: blog.url,
@@ -10,18 +10,19 @@ function handleLike(dispatch: Dispatch<any>, blog: IBlog) {
     author: blog.author,
     likes: blog.likes,
   };
-  dispatch(startLikeBlog(updatedBlog));
+  dispatch(startLikeBlog(updatedBlog, token));
 }
 
 const LikeSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
   return (
     <p>
       <span data-testid="like">likes {blog.likes}</span>
       <button
         data-testid="like-btn"
         type="button"
-        onClick={() => handleLike(dispatch, blog)}
+        onClick={() => handleLike(dispatch, blog, user.token)}
       >
         <small>like</small>
       </button>

@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import CommentsSection from "./CommentsSection";
 
 import LikeSection from "./LikeSection";
 
@@ -22,12 +23,7 @@ const BlogView = ({ id }: { id: string }) => {
         <a href={viewedBlog.url}>{viewedBlog.url}</a>
         <LikeSection blog={viewedBlog} />
         <p>added by {viewedBlog.user.name}</p>
-        <h3>comments</h3>
-        <ul>
-          {viewedBlog.comments.map((comment) => (
-            <li key={comment.id}>{comment.content}</li>
-          ))}
-        </ul>
+        <CommentsSection blog={viewedBlog} />
       </div>
     </div>
   );
