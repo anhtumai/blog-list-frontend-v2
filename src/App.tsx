@@ -3,6 +3,8 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { startInitBlogs } from "./actions/blog";
+
+import Header from "./components/Header";
 import MainPage from "./components/MainPage";
 import UsersPage from "./components/UsersPage";
 import SingleUserPage from "./components/SingleUserPage";
@@ -16,6 +18,7 @@ function App() {
 
   return (
     <Router>
+      <Header />
       <h1>Blog List Application</h1>
       <Notification />
       <Switch>

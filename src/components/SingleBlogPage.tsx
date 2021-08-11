@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { startInitUsers } from "../actions/user";
 import { userSelector } from "../selectors";
 
-import LoginBanner from "./LoginBanner";
 import BlogView from "./BlogView";
 
 const SingleBlogPage = () => {
@@ -21,7 +20,6 @@ const SingleBlogPage = () => {
   return (
     <div>
       <h2>blogs</h2>
-      <LoginBanner />
       <BlogView id={blogId} />
     </div>
   );

@@ -7,7 +7,7 @@ import { userSelector } from "../selectors";
 const CommentsSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
 
-  const user = useSelector(userSelector);
+  const user = useSelector(userSelector) as IUserWithToken;
 
   const content = useInputField();
 

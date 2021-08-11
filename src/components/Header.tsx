@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import { doLogout } from "../actions/auth";
 import { startSetNotification } from "../actions/notification";
 
-const LoginBanner = () => {
+const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector(userSelector);
@@ -16,6 +16,13 @@ const LoginBanner = () => {
     dispatch(startSetNotification("success", "Log out successfully"));
     history.push("/");
   }
+
+  if (user === null)
+    return (
+      <div>
+        <Link to="/">blogs</Link> <Link to="/users">users</Link>
+      </div>
+    );
 
   return (
     <p>
@@ -28,4 +35,4 @@ const LoginBanner = () => {
   );
 };
 
-export default LoginBanner;
+export default Header;

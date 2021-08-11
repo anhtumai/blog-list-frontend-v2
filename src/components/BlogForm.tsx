@@ -10,7 +10,7 @@ import InputWithLabel from "./InputWithLabel";
 const BlogForm = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector(userSelector);
+  const user = useSelector(userSelector) as IUserWithToken;
 
   const title = useInputField();
   const author = useInputField();

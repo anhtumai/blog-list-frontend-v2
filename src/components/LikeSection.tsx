@@ -17,7 +17,7 @@ function handleLike(dispatch: Dispatch<any>, blog: IBlog, token: string) {
 
 const LikeSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
-  const user = useSelector(userSelector);
+  const user = useSelector(userSelector) as IUserWithToken;
   return (
     <p>
       <span data-testid="like">likes {blog.likes}</span>

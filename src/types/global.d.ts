@@ -6,7 +6,7 @@ declare global {
     notiType: "error" | "success";
   }
   interface RootState extends DefaultRootState {
-    user: IUserWithToken;
+    user: IUserWithToken | null;
     notification: NotificationState;
     blogs: IBlog[];
     users: IUser[];

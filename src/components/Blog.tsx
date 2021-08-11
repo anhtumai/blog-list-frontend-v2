@@ -20,10 +20,10 @@ function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
 const Blog = ({ blog }: IBlogProps) => {
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(userSelector);
-  const owned = currentUser.username === blog.user.username ? true : false;
-
+  const currentUser = useSelector(userSelector) as IUserWithToken;
   const [expand, setExpand] = useState(false);
+
+  const owned = currentUser.username === blog.user.username ? true : false;
 
   const showWhenVisible = { display: expand ? "" : "none" };
 

@@ -4,7 +4,6 @@ import { startInitUsers } from "../actions/user";
 
 import { useParams } from "react-router";
 
-import LoginBanner from "./LoginBanner";
 import UserView from "./UserView";
 import { userSelector } from "../selectors";
 
@@ -21,7 +20,6 @@ const SingleUserPage = () => {
   return (
     <div>
       <h2>blogs</h2>
-      <LoginBanner />
       <UserView id={userId} />
     </div>
   );
