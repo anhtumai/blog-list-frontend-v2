@@ -9,6 +9,7 @@ import MainPage from "./components/MainPage";
 import UsersPage from "./components/UsersPage";
 import SingleUserPage from "./components/SingleUserPage";
 import SingleBlogPage from "./components/SingleBlogPage";
+import RegistrationPage from "./components/RegisterPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/users">
           <UsersPage />
+        </Route>
+        <Route path="/register">
+          <RegistrationPage />
         </Route>
         <Route path="/">
           <MainPage />

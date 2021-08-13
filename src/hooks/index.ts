@@ -4,8 +4,10 @@ import React from "react";
 export const useInputField = () => {
   const [value, setValue] = useState("");
 
-  const onChange = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+  const onChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setValue(event.target.value);
   };
 
   const reset = () => {

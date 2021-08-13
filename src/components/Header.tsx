@@ -20,7 +20,8 @@ const Header = () => {
   if (user === null)
     return (
       <div>
-        <Link to="/">blogs</Link> <Link to="/users">users</Link>
+        <Link to="/">blogs</Link> <Link to="/users">users</Link>{" "}
+        <Link to="/register">register</Link>
       </div>
     );
 
@@ -31,6 +32,7 @@ const Header = () => {
       <button type="button" onClick={handleLogout}>
         <small>logout</small>
       </button>
+      <Link to="/register">register</Link>
     </p>
   );
 };
