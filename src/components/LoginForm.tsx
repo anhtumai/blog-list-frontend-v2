@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useInputField } from "../hooks";
 
 import { startLogin } from "../actions/auth";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const history = useHistory();
 
   const username = useInputField();
   const password = useInputField();
@@ -63,7 +65,7 @@ const LoginForm = () => {
     }
     username.reset();
     password.reset();
-    dispatch(startLogin(username.value, password.value));
+    dispatch(startLogin(username.value, password.value, history));
   }
 
   return (

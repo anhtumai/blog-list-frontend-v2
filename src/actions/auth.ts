@@ -1,4 +1,6 @@
 import { Dispatch } from "react-dom/node_modules/@types/react";
+import { History } from "history";
+
 import authService from "../services/auth";
 import { startSetNotification } from "./notification";
 
@@ -12,10 +14,12 @@ export const doLogout = () => ({
 });
 
 export const startLogin =
-  (username: string, password: string) => async (dispatch: Dispatch<any>) => {
+  (username: string, password: string, history: History) =>
+  async (dispatch: Dispatch<any>) => {
     try {
       const loggedUser = await authService.login({ username, password });
       dispatch(doLogin(loggedUser));
+      history.push("/");
       dispatch(startSetNotification("success", "Login successfully"));
     } catch (err) {
       console.log(err);

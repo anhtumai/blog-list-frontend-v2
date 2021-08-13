@@ -34,8 +34,11 @@ const Header = () => {
   return (
     <AppBar position="static" className={classes.root}>
       <Toolbar>
+        <Button color="inherit" disabled>
+          Blog List
+        </Button>
         <Button color="inherit" component={Link} to="/">
-          Blogs
+          Home
         </Button>
         <Button color="inherit" component={Link} to="/users">
           Users
