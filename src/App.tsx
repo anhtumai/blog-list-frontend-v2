@@ -29,7 +29,6 @@ function App() {
   return (
     <Router>
       <Header />
-      <h1>Blog List Application</h1>
       <Notification />
       <Switch>
         <Route path="/users/:id">

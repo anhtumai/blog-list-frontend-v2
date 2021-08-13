@@ -53,7 +53,7 @@ const RegisterForm = () => {
 
   return (
     <Grid>
-      <Paper>
+      <Paper className={classes.paper}>
         <form className={classes.root} onSubmit={() => console.log("submit")}>
           <Grid>
             <Avatar className={classes.avatar}>
