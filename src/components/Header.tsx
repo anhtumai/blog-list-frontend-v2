@@ -1,14 +1,28 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Button, Box } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 import { userSelector } from "../selectors";
 import { useHistory } from "react-router";
 import { doLogout } from "../actions/auth";
 import { startSetNotification } from "../actions/notification";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  emptyBox: {
+    flexGrow: 1,
+  },
+}));
+
 const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const classes = useStyles();
+
   const user = useSelector(userSelector);
 
   function handleLogout() {
@@ -17,23 +31,26 @@ const Header = () => {
     history.push("/");
   }
 
-  if (user === null)
-    return (
-      <div>
-        <Link to="/">blogs</Link> <Link to="/users">users</Link>{" "}
-        <Link to="/register">register</Link>
-      </div>
-    );
-
   return (
-    <p>
-      <Link to="/">blogs</Link> <Link to="/users">users</Link> {user.name}{" "}
-      logged in &nbsp;
-      <button type="button" onClick={handleLogout}>
-        <small>logout</small>
-      </button>
-      <Link to="/register">register</Link>
-    </p>
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <Button color="inherit" component={Link} to="/">
+          Blogs
+        </Button>
+        <Button color="inherit" component={Link} to="/users">
+          Users
+        </Button>
+        <Box component="div" display="flex" className={classes.emptyBox}></Box>
+        {user !== null ? (
+          <Button color="inherit" onClick={handleLogout}>
+            Logout
+          </Button>
+        ) : null}
+        <Button color="inherit" component={Link} to="/register">
+          Register
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 };
 
