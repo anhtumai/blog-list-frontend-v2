@@ -1,15 +1,43 @@
 import { Dispatch, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import { userSelector } from "../selectors";
 import { startDeleteBlog } from "../actions/blog";
 
 import LikeSection from "./LikeSection";
+import {
+  Button,
+  Paper,
+  Box,
+  Link as NavLink,
+  Typography,
+} from "@material-ui/core";
 
 interface IBlogProps {
   blog: IBlog;
 }
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    border: "outset",
+    margin: theme.spacing(1),
+    display: "block",
+  },
+  top: {
+    display: "flex",
+    justifyContent: "space-between",
+    paddingBottom: "0vh",
+    marginBottom: 0,
+    fontSize: "1rem",
+  },
+  details: {
+    marginTop: 0,
+    marginBottom: 0,
+  },
+}));
 
 function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
   if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
@@ -19,6 +47,7 @@ function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
 
 const Blog = ({ blog }: IBlogProps) => {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const currentUser = useSelector(userSelector) as IUserWithToken;
   const [expand, setExpand] = useState(false);
@@ -29,53 +58,43 @@ const Blog = ({ blog }: IBlogProps) => {
 
   const removeButtonStyle = {
     display: owned ? "" : "none",
-    backgroundColor: "#008CBA",
+    //backgroundColor: "#008CBA",
+    paddingLeft: "1vw",
+    fontSize: "0.67rem",
   };
-
-  const blogStyle = {
-    paddingTop: 10,
-    paddingLeft: 2,
-    border: "solid",
-    borderWidth: 1,
-    marginBottom: 5,
-    lineHeight: "2px",
-  };
-
-  console.log(blog.url);
 
   return (
-    <div data-testid="blog" style={blogStyle}>
-      <div>
+    <Paper className={classes.root}>
+      <Box className={classes.top}>
         <Link to={`/blogs/${blog.id}`}>
-          {blog.title} {blog.author}{" "}
+          {blog.title} {blog.author}
         </Link>
-        <button
-          data-testid="blog-toggle-btn"
-          id="toggleButton"
-          type="button"
-          onClick={() => setExpand(!expand)}
-        >
-          <small>{expand ? "hide" : "view"}</small>
-        </button>
-      </div>
-      <div style={showWhenVisible}>
-        <p>
-          <a href={blog.url} target="_blank" rel="noreferrer">
+        <Button size="small" onClick={() => setExpand(!expand)}>
+          {expand ? "hide" : "view"}
+        </Button>
+      </Box>
+      <Paper className={classes.details} style={showWhenVisible}>
+        <Typography>
+          <NavLink href={blog.url} target="_blank" rel="noreferrer">
             {blog.url}
-          </a>
-        </p>
+          </NavLink>
+        </Typography>
         <LikeSection blog={blog} />
-        <p>{blog.user.name}</p>
-        <button
+        <Typography component="p">{blog.user.name}</Typography>
+        <Button
           data-testid="remove-btn"
+          color="secondary"
+          size="small"
+          variant="contained"
           type="button"
           style={removeButtonStyle}
           onClick={() => handleDelete(dispatch, blog, currentUser.token)}
+          startIcon={<DeleteIcon />}
         >
-          <small>remove</small>
-        </button>
-      </div>
-    </div>
+          Remove
+        </Button>
+      </Paper>
+    </Paper>
   );
 };
 
