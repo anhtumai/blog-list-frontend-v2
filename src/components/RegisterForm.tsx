@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: 20,
-    height: "70vh",
-    width: 280,
+    height: "500px",
+    width: "300px",
     margin: "auto",
   },
   typography: {

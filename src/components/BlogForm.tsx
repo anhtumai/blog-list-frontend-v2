@@ -5,10 +5,50 @@ import { startCreateBlog } from "../actions/blog";
 import { userSelector } from "../selectors";
 import { useInputField } from "../hooks";
 
-import InputWithLabel from "./InputWithLabel";
+import {
+  Typography,
+  TextField,
+  Button,
+  Paper,
+  makeStyles,
+} from "@material-ui/core";
 
-const BlogForm = () => {
+interface IBlogFormProps {
+  toggleVisibility: () => void;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    paddingLeft: 0,
+    marginLeft: 0,
+  },
+  paper: {
+    marginTop: theme.spacing(1),
+    marginBottom: 0,
+    //padding: 20,
+    height: "240px",
+    width: "400px",
+  },
+  buttons: {
+    marginTop: "2vh",
+    display: "flex",
+    justifyContent: "space-evenly",
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+  input: {
+    fontSize: "0.81rem",
+    //paddingBottom: "0.6rem",
+  },
+}));
+
+const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const user = useSelector(userSelector) as IUserWithToken;
 
@@ -34,39 +74,68 @@ const BlogForm = () => {
   }
 
   return (
-    <div>
-      <h3>Add a new:</h3>
-      <form data-testid="blog-form" onSubmit={onSubmit}>
-        <InputWithLabel
-          htmlFor="title"
+    <Paper className={classes.paper}>
+      <form
+        data-testid="blog-form"
+        onSubmit={onSubmit}
+        className={classes.root}
+      >
+        <Typography variant="h6" gutterBottom>
+          Add a new
+        </Typography>
+        <TextField
+          required
+          name="title"
+          label="Title"
+          fullWidth
           value={title.value}
-          onInputChange={title.onChange}
-        >
-          <span>title: </span>
-        </InputWithLabel>
-        <br />
-        <InputWithLabel
-          htmlFor="author"
+          onChange={title.onChange}
+          InputProps={{
+            classes: {
+              input: classes.input,
+            },
+          }}
+        />
+        <TextField
+          required
+          name="author"
+          label="Author"
           value={author.value}
-          onInputChange={author.onChange}
-        >
-          <span>author: </span>
-        </InputWithLabel>
-        <br />
-        <InputWithLabel
-          htmlFor="url"
+          onChange={author.onChange}
+          InputProps={{
+            classes: {
+              input: classes.input,
+            },
+          }}
+        />
+        <TextField
+          required
+          name="url"
+          label="Url"
           value={url.value}
-          onInputChange={url.onChange}
-        >
-          <span>url: </span>
-        </InputWithLabel>{" "}
-        <div>
-          <button data-testid="blog-submit-btn" type="submit">
-            create
-          </button>
+          onChange={url.onChange}
+          InputProps={{
+            classes: {
+              input: classes.input,
+            },
+          }}
+        />
+        <div className={classes.buttons}>
+          <Button variant="contained" size="small" onClick={toggleVisibility}>
+            Cancel
+          </Button>
+          <Button
+            data-testid="blog-submit-btn"
+            size="small"
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            Create
+          </Button>
         </div>
       </form>
-    </div>
+    </Paper>
   );
 };
 

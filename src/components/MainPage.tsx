@@ -1,10 +1,10 @@
-import BlogForm from "./BlogForm";
+import TogglableBlogForm from "./TogglableBlogForm";
 import Blogs from "./Blogs";
 
 const MainPage = () => {
   return (
     <div>
-      <BlogForm />
+      <TogglableBlogForm />
       <Blogs />
     </div>
   );

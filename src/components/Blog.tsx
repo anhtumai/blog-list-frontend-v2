@@ -29,13 +29,6 @@ const useStyles = makeStyles((theme) => ({
   top: {
     display: "flex",
     justifyContent: "space-between",
-    paddingBottom: "0vh",
-    marginBottom: 0,
-    fontSize: "1rem",
-  },
-  details: {
-    marginTop: 0,
-    marginBottom: 0,
   },
 }));
 
@@ -58,9 +51,8 @@ const Blog = ({ blog }: IBlogProps) => {
 
   const removeButtonStyle = {
     display: owned ? "" : "none",
-    //backgroundColor: "#008CBA",
     paddingLeft: "1vw",
-    fontSize: "0.67rem",
+    fontSize: "0.6rem",
   };
 
   return (
@@ -73,7 +65,7 @@ const Blog = ({ blog }: IBlogProps) => {
           {expand ? "hide" : "view"}
         </Button>
       </Box>
-      <Paper className={classes.details} style={showWhenVisible}>
+      <Paper style={showWhenVisible}>
         <Typography>
           <NavLink href={blog.url} target="_blank" rel="noreferrer">
             {blog.url}

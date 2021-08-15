@@ -1,4 +1,4 @@
-import { Typography, Button, Box } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
