@@ -5,7 +5,11 @@ import { startInitUsers } from "../actions/user";
 import { useParams } from "react-router";
 
 import UserView from "./UserView";
+import Typography from "@material-ui/core/Typography";
+
 import { userSelector } from "../selectors";
+
+import { headerStyle } from "./styles";
 
 const SingleUserPage = () => {
   const userId = (useParams() as any).id;
@@ -19,7 +23,9 @@ const SingleUserPage = () => {
 
   return (
     <div>
-      <h2>blogs</h2>
+      <Typography component="h5" variant="h5" style={headerStyle}>
+        Blog App
+      </Typography>
       <UserView id={userId} />
     </div>
   );
