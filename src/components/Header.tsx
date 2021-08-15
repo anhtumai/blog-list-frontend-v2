@@ -1,6 +1,11 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Button, Box } from "@material-ui/core";
+import { AppBar, Toolbar, Button, Box, IconButton } from "@material-ui/core";
+import Tooltip from "@material-ui/core/Tooltip";
+
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
 import { makeStyles } from "@material-ui/core";
 
 import { userSelector } from "../selectors";
@@ -44,11 +49,19 @@ const Header = () => {
           Users
         </Button>
         <Box component="div" display="flex" className={classes.emptyBox}></Box>
-        {user !== null ? (
-          <Button color="inherit" onClick={handleLogout}>
-            Logout
-          </Button>
-        ) : null}
+        {user && (
+          <React.Fragment>
+            <Tooltip title={`logged in as ${user.name}`}>
+              <IconButton aria-label="random text">
+                <AccountCircleIcon />{" "}
+              </IconButton>
+            </Tooltip>
+
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          </React.Fragment>
+        )}
         <Button color="inherit" component={Link} to="/register">
           Register
         </Button>
