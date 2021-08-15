@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
+import Typography from "@material-ui/core/Typography";
 
 import { userSelector } from "../selectors";
-
 import Users from "./Users";
+import { headerStyle } from "./styles";
 
 const UsersPage = () => {
   const user = useSelector(userSelector);
@@ -11,8 +12,12 @@ const UsersPage = () => {
 
   return (
     <div>
-      <h2>blogs</h2>
-      <h2>Users</h2>
+      <Typography component="h5" variant="h5" style={headerStyle}>
+        Blog App
+      </Typography>
+      <Typography component="h6" variant="h6" style={headerStyle}>
+        Users
+      </Typography>
       <Users />
     </div>
   );

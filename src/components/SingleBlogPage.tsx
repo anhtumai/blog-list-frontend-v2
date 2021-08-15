@@ -8,9 +8,7 @@ import { userSelector } from "../selectors";
 import BlogView from "./BlogView";
 import { Typography } from "@material-ui/core";
 
-const headerStyle = {
-  marginTop: "3vh",
-};
+import { headerStyle } from "./styles";
 
 const SingleBlogPage = () => {
   const blogId = (useParams() as any).id;
@@ -27,6 +25,7 @@ const SingleBlogPage = () => {
       <Typography component="h5" variant="h5" style={headerStyle}>
         Blog App
       </Typography>
+
       <BlogView id={blogId} />
     </div>
   );
