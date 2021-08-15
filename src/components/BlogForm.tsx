@@ -62,8 +62,9 @@ const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
     url.reset();
   }
 
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
+    toggleVisibility();
     const submittedInfo = {
       title: title.value,
       author: author.value,
@@ -77,7 +78,7 @@ const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
     <Paper className={classes.paper}>
       <form
         data-testid="blog-form"
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
         className={classes.root}
       >
         <Typography variant="h6" gutterBottom>
