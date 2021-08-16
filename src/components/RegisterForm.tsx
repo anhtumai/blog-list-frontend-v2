@@ -63,6 +63,11 @@ const RegisterForm = () => {
       alert("Password and confirmed password do not match");
       return false;
     }
+    const nameRegex = /^[a-zA-Z.' ]+$/;
+    if (!nameRegex.test(name.value)) {
+      alert("Provided name is invalid");
+      return false;
+    }
     return true;
   }
 
