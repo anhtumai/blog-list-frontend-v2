@@ -29,7 +29,6 @@ export const startCreateUser = (
       );
     } catch (err) {
       console.log(err);
-      console.log(err.response);
       const errorMessage =
         err.response.status === 400
           ? err.response.data.error

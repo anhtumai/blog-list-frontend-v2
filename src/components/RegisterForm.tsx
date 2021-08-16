@@ -68,7 +68,7 @@ const RegisterForm = () => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!validateForm) return;
+    if (!validateForm()) return;
     resetFields();
     dispatch(
       startCreateUser(name.value, username.value, password.value, history),
