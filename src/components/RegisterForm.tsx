@@ -68,6 +68,14 @@ const RegisterForm = () => {
       alert("Provided name is invalid");
       return false;
     }
+    if (password.value.length < 3) {
+      alert("Password should contain more than 3 characters");
+      return false;
+    }
+    if (username.value.length < 3) {
+      alert("Username should contain more than 3 characters");
+      return false;
+    }
     return true;
   }
 
