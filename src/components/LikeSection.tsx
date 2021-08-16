@@ -36,9 +36,9 @@ const LikeSection = ({ blog }: { blog: IBlog }) => {
     <Typography style={typographyStyle}>
       <span data-testid="like">likes {blog.likes}</span>
       <Button
+        data-testid="like-btn"
         style={buttonStyle}
         size="small"
-        data-testid="like-btn"
         type="button"
         onClick={() => handleLike(dispatch, blog, user.token)}
         startIcon={<ThumbUpIcon />}

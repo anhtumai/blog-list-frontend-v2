@@ -51,7 +51,10 @@ const Header = () => {
         <Box component="div" display="flex" className={classes.emptyBox}></Box>
         {user && (
           <React.Fragment>
-            <Tooltip title={`logged in as ${user.name}`}>
+            <Tooltip
+              data-testid="account-icon"
+              title={`${user.name} logged in`}
+            >
               <IconButton aria-label="random text">
                 <AccountCircleIcon />{" "}
               </IconButton>

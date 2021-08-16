@@ -86,6 +86,7 @@ const LoginForm = () => {
           </Grid>
           <TextField
             label="Username"
+            data-testid="username"
             variant="filled"
             required
             value={username.value}
@@ -93,6 +94,7 @@ const LoginForm = () => {
           />
           <TextField
             label="Password"
+            data-testid="password"
             variant="filled"
             type="password"
             required
@@ -101,7 +103,12 @@ const LoginForm = () => {
           />
 
           <div>
-            <Button type="submit" variant="contained" color="primary">
+            <Button
+              data-testid="login-btn"
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
               Login
             </Button>
           </div>

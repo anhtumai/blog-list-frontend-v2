@@ -56,12 +56,17 @@ const Blog = ({ blog }: IBlogProps) => {
   };
 
   return (
-    <Paper className={classes.root}>
+    <Paper data-testid="blog" className={classes.root}>
       <Box className={classes.top}>
         <Link to={`/blogs/${blog.id}`}>
           {blog.title} {blog.author}
         </Link>
-        <Button size="small" onClick={() => setExpand(!expand)}>
+        <Button
+          data-testid="blog-toggle-btn"
+          id="toggleButton"
+          size="small"
+          onClick={() => setExpand(!expand)}
+        >
           {expand ? "hide" : "view"}
         </Button>
       </Box>

@@ -86,6 +86,7 @@ const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
         </Typography>
         <TextField
           required
+          id="title"
           name="title"
           label="Title"
           fullWidth
@@ -99,6 +100,7 @@ const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
         />
         <TextField
           required
+          id="author"
           name="author"
           label="Author"
           value={author.value}
@@ -111,6 +113,7 @@ const BlogForm = ({ toggleVisibility }: IBlogFormProps) => {
         />
         <TextField
           required
+          id="url"
           name="url"
           label="Url"
           value={url.value}

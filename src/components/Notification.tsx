@@ -16,7 +16,7 @@ const Notification = () => {
   };
 
   return (
-    <Alert severity={notiType} style={style}>
+    <Alert className={notiType} severity={notiType} style={style}>
       {message}
     </Alert>
   );

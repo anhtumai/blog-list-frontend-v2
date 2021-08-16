@@ -63,7 +63,7 @@ export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
       dispatch(
         startSetNotification(
           "success",
-          `Create ${blog.title} by ${blog.author}`,
+          `a new blog ${blog.title} by ${blog.author} added`,
         ),
       );
     } catch (err) {
