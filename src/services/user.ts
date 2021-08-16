@@ -7,6 +7,11 @@ async function getAll(): Promise<IUser[]> {
   return response.data;
 }
 
-const userService = { getAll };
+async function create(name: string, username: string, password: string) {
+  const response = await axios.post(baseUrl, { name, username, password });
+  return response.data;
+}
+
+const userService = { getAll, create };
 
 export default userService;

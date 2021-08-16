@@ -59,10 +59,6 @@ const LoginForm = () => {
 
   async function handleLogin(event: React.SyntheticEvent) {
     event.preventDefault();
-    if (!username.value || !password.value) {
-      alert("Input fields must not be empty");
-      return;
-    }
     username.reset();
     password.reset();
     dispatch(startLogin(username.value, password.value, history));

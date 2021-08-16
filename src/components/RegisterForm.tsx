@@ -1,9 +1,13 @@
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+
 import { Grid, Paper, Avatar, Typography, makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 
 import { useInputField } from "../hooks";
+import { startCreateUser } from "../actions/user";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const classes = useStyles();
 
   const username = useInputField();
@@ -49,12 +55,30 @@ const RegisterForm = () => {
     username.reset();
     name.reset();
     password.reset();
+    confirmedPassword.reset();
+  }
+
+  function validateForm() {
+    if (password.value !== confirmedPassword.value) {
+      alert("Password and confirmed password do not match");
+      return false;
+    }
+    return true;
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!validateForm) return;
+    resetFields();
+    dispatch(
+      startCreateUser(name.value, username.value, password.value, history),
+    );
   }
 
   return (
     <Grid>
       <Paper className={classes.paper}>
-        <form className={classes.root} onSubmit={() => console.log("submit")}>
+        <form className={classes.root} onSubmit={handleSubmit}>
           <Grid>
             <Avatar className={classes.avatar}>
               <AddIcon />
