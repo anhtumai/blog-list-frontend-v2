@@ -7,6 +7,11 @@ Link to course: [Course Url](https://fullstackopen.com/en/part7)
 
 Link to demo app: [Netlify link](https://blog-list-v2.netlify.app/)
 
+__Credentials__: You can log in with these usernames and passwords:
+
+- `hellas`, `hellaspassword`
+- `anhtumai`, `anhtumaipassword`
+
 Link to backend repo: [Backend app](https://github.com/anhtumai/blog-list-backend)
 
 ## Installation
