@@ -1,5 +1,10 @@
 import { useSelector } from "react-redux";
+import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 import { notificationSelector } from "../selectors/index";
+
+const Alert = (props: AlertProps) => {
+  return <MuiAlert elevation={6} variant="filled" {...props}></MuiAlert>;
+};
 
 const Notification = () => {
   const { message, notiType } = useSelector(notificationSelector);
@@ -7,16 +12,14 @@ const Notification = () => {
   if (message === "") return null;
 
   const style = {
-    color: notiType === "error" ? "red" : "green",
-    background: "lightgrey",
-    fontSize: "12px",
-    borderStyle: "solid",
-    borderRadius: "5px",
-    padding: "5px",
-    marginBottom: "5px",
+    fontSize: "0.81rem",
   };
 
-  return <div style={style}>{message}</div>;
+  return (
+    <Alert severity={notiType} style={style}>
+      {message}
+    </Alert>
+  );
 };
 
 export default Notification;
