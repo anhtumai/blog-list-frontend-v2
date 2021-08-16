@@ -23,6 +23,8 @@ export const startLogin =
       dispatch(startSetNotification("success", "Login successfully"));
     } catch (err) {
       console.log(err);
-      dispatch(startSetNotification("error", "Fail to login"));
+      const errorMessage =
+        err.response.status === 401 ? "Wrong credentials" : "Fail to login";
+      dispatch(startSetNotification("error", errorMessage));
     }
   };

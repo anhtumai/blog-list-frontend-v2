@@ -30,7 +30,18 @@ export const startDeleteBlog = (blog: IBlog, token: string) => {
       );
     } catch (err) {
       console.log(err);
-      dispatch(startSetNotification("error", `Fail to remove ${blog.title}`));
+      let errorMessage = "";
+      switch (err.response.status) {
+        case 403:
+          errorMessage = "User has no permission to delete this blog.";
+          break;
+        case 401:
+          errorMessage = "Unauthorized. Token possibily expired.";
+          break;
+        default:
+          errorMessage = `Fail to remove ${blog.title}`;
+      }
+      dispatch(startSetNotification("error", errorMessage));
     }
   };
 };
@@ -57,7 +68,15 @@ export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
       );
     } catch (err) {
       console.log(err);
-      dispatch(startSetNotification("error", `Fail to create ${blog.title}`));
+      let errorMessage = "";
+      switch (err.response.status) {
+        case 401:
+          errorMessage = "Unauthorized. Token possibily expired.";
+          break;
+        default:
+          errorMessage = `Fail to create ${blog.title}`;
+      }
+      dispatch(startSetNotification("error", errorMessage));
     }
   };
 };
