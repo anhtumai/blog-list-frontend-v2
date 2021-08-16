@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: "auto",
-    background: "#1bbd7e",
+    background: "rgb(220, 0, 78)",
   },
   paper: {
     padding: 20,
