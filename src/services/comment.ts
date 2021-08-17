@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { constructConfig } from "./utils";
 
-const baseUrl = "/api/blogs";
+const baseUrl = `${process.env.REACT_APP_BACKEND_URL}/api/blogs`;
 
 async function create(
   blogId: string,

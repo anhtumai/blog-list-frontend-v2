@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "/api/login";
+const baseUrl = `${process.env.REACT_APP_BACKEND_URL}/api/login`;
+
+console.log(baseUrl);
 
 async function login(credentials: {
   username: string;

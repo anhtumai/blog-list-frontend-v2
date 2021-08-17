@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "/api/users";
+const baseUrl = `${process.env.REACT_APP_BACKEND_URL}/api/users`;
 
 async function getAll(): Promise<IUser[]> {
   const response = await axios.get(baseUrl);
