@@ -1,4 +1,3 @@
-import { Dispatch } from "react";
 import commentService from "../services/comment";
 //import { startSetNotification } from "./notification";
 
@@ -15,7 +14,7 @@ export const startCreateComment = (
   commentInfo: ICreateComment,
   token: string,
 ) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     try {
       const newComment: IComment = await commentService.create(
         blogId,

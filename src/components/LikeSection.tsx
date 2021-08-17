@@ -1,21 +1,9 @@
 import { Typography, Button } from "@material-ui/core";
-import { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 
 import { startLikeBlog } from "../actions/blog";
 import { userSelector } from "../selectors";
-
-function handleLike(dispatch: Dispatch<any>, blog: IBlog, token: string) {
-  const updatedBlog: IUpdateBlog = {
-    id: blog.id,
-    url: blog.url,
-    title: blog.title,
-    author: blog.author,
-    likes: blog.likes,
-  };
-  dispatch(startLikeBlog(updatedBlog, token));
-}
 
 const typographyStyle = {
   marginTop: 0,
@@ -32,6 +20,16 @@ const buttonStyle = {
 const LikeSection = ({ blog }: { blog: IBlog }) => {
   const dispatch = useDispatch();
   const user = useSelector(userSelector) as IUserWithToken;
+  function handleLike(blog: IBlog, token: string) {
+    const updatedBlog: IUpdateBlog = {
+      id: blog.id,
+      url: blog.url,
+      title: blog.title,
+      author: blog.author,
+      likes: blog.likes,
+    };
+    dispatch(startLikeBlog(updatedBlog, token));
+  }
   return (
     <Typography style={typographyStyle}>
       <span data-testid="like">likes {blog.likes}</span>
@@ -40,7 +38,7 @@ const LikeSection = ({ blog }: { blog: IBlog }) => {
         style={buttonStyle}
         size="small"
         type="button"
-        onClick={() => handleLike(dispatch, blog, user.token)}
+        onClick={() => handleLike(blog, user.token)}
         startIcon={<ThumbUpIcon />}
       >
         like

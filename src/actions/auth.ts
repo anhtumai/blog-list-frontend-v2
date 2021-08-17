@@ -1,4 +1,3 @@
-import { Dispatch } from "react-dom/node_modules/@types/react";
 import { History } from "history";
 
 import authService from "../services/auth";
@@ -15,7 +14,7 @@ export const doLogout = () => ({
 
 export const startLogin =
   (username: string, password: string, history: History) =>
-  async (dispatch: Dispatch<any>) => {
+  async (dispatch: any) => {
     try {
       const loggedUser = await authService.login({ username, password });
       dispatch(doLogin(loggedUser));

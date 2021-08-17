@@ -1,5 +1,3 @@
-import { Dispatch } from "react";
-
 const doShowNotification = (
   notiType: "error" | "success",
   message: string,
@@ -18,7 +16,7 @@ export const startSetNotification = (
   message: string,
   seconds = 5,
 ) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     if (prevNotificationId) clearTimeout(prevNotificationId);
     dispatch(doShowNotification(notiType, message));
     prevNotificationId = setTimeout(() => {

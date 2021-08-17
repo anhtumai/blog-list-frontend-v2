@@ -1,9 +1,8 @@
-import { Dispatch } from "react";
 import blogService from "../services/blog";
 import { startSetNotification } from "./notification";
 
 export const startInitBlogs = () => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     const blogs = await blogService.getAll();
     dispatch({
       type: "INIT_BLOGS",
@@ -18,7 +17,7 @@ const doDeleteBlog = (id: string) => ({
 });
 
 export const startDeleteBlog = (blog: IBlog, token: string) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     try {
       await blogService.remove(blog.id, token);
       dispatch(doDeleteBlog(blog.id));
@@ -52,7 +51,7 @@ const doCreateBlog = (blog: ICreateBlog) => ({
 });
 
 export const startCreateBlog = (blog: ICreateBlog, user: IUserWithToken) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     try {
       const newBlog = await blogService.create(blog, user.token);
       const updatedBlog = {
@@ -87,7 +86,7 @@ const doLikeBlog = (id: string) => ({
 });
 
 export const startLikeBlog = (blog: IUpdateBlog, token: string) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     try {
       await blogService.updateLikes(blog, token);
       dispatch(doLikeBlog(blog.id));

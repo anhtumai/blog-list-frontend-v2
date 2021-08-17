@@ -1,4 +1,4 @@
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
@@ -32,12 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function handleDelete(dispatch: Dispatch<any>, blog: IBlog, token: string) {
-  if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
-
-  dispatch(startDeleteBlog(blog, token));
-}
-
 const Blog = ({ blog }: IBlogProps) => {
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -54,7 +48,11 @@ const Blog = ({ blog }: IBlogProps) => {
     paddingLeft: "1vw",
     fontSize: "0.6rem",
   };
+  function handleDelete(blog: IBlog, token: string) {
+    if (!window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) return;
 
+    dispatch(startDeleteBlog(blog, token));
+  }
   return (
     <Paper data-testid="blog" className={classes.root}>
       <Box className={classes.top}>
@@ -85,7 +83,7 @@ const Blog = ({ blog }: IBlogProps) => {
           variant="contained"
           type="button"
           style={removeButtonStyle}
-          onClick={() => handleDelete(dispatch, blog, currentUser.token)}
+          onClick={() => handleDelete(blog, currentUser.token)}
           startIcon={<DeleteIcon />}
         >
           Remove

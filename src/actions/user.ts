@@ -1,11 +1,10 @@
-import { Dispatch } from "react";
 import { History } from "history";
 
 import userService from "../services/user";
 import { startSetNotification } from "./notification";
 
 export const startInitUsers = () => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     const users = await userService.getAll();
     dispatch({
       type: "INIT_USERS",
@@ -20,7 +19,7 @@ export const startCreateUser = (
   password: string,
   history: History,
 ) => {
-  return async (dispatch: Dispatch<any>) => {
+  return async (dispatch: any) => {
     try {
       const newUser: IUser = await userService.create(name, username, password);
       history.push("/");
