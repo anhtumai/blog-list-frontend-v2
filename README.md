@@ -1,13 +1,17 @@
 # Blog List frontend
 
+> An app allows users to save information about interesting blogs
+> they have stumbled across on the internet.
+> For each listed blog the app will save the author, title, url, and amount of upvotes
+> from users of the application.
 > Frontend for blog list project for course fullstack open 2021.
 > Written in React (Typescript)
 
-Link to course: [Course Url](https://fullstackopen.com/en/part7)
+Link to course: [Course Url](https://fullstackopen.com/en/part4/structure_of_backend_application_introduction_to_testing#exercises-4-1-4-2)
 
 Link to demo app: [Netlify link](https://blog-list-v2.netlify.app/)
 
-__Credentials__: You can log in with these usernames and passwords:
+**Credentials**: You can log in with these usernames and passwords:
 
 - `hellas`, `hellaspassword`
 - `anhtumai`, `anhtumaipassword`
